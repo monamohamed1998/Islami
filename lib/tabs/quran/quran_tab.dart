@@ -40,9 +40,13 @@ class QuranTab extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Text("عدد الايات",style:Theme.of(context).textTheme.headlineSmall),
-                
-                Text("اسم السورة",style:Theme.of(context).textTheme.headlineSmall),
+                Expanded(child: Center(child: Text("عدد الايات",style:Theme.of(context).textTheme.headlineSmall))),
+                 Container(
+                    width: 2, 
+                    height: 30, 
+                    color: AppTheme.lightPrimary, 
+                  ),
+                Expanded(child: Center(child: Text("اسم السورة",style:Theme.of(context).textTheme.headlineSmall))),
               ],
             ),
              Divider(
@@ -52,34 +56,50 @@ class QuranTab extends StatelessWidget {
 
 
 
-            Expanded(
-              child: ListView.separated(
-                
-                itemBuilder: 
-              (BuildContext context,int index)=>
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                 Text(versesNumber[index].toString(),
-                  style:Theme.of(context).textTheme.headlineSmall),
-                  
-                  GestureDetector(
-                     onTap: () {
-                    Navigator.pushNamed(context, QuranDetails.routeName,
-                    arguments: suraDetails(suraname: suraNames[index], index: index),
-                     );
-                  },
-                    child: Text(suraNames[index],
-                    style:Theme.of(context).textTheme.headlineSmall),
-                  ),
-                ],
+          Expanded(
+  child: ListView.separated(
+    itemCount: suraNames.length,
+    separatorBuilder: (BuildContext context, int index) =>
+      SizedBox(height: 12),
+    itemBuilder: (BuildContext context, int index) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Expanded(
+            child: Center(
+              child: Text(
+                versesNumber[index].toString(),
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
-               separatorBuilder:
-               (BuildContext context,int index)=> SizedBox(height: 12,),
-                itemCount: suraNames.length,
-                ),
             ),
-          ],
+          ),
+           Container(
+                    width: 2, 
+                    height: 30, 
+                    color: AppTheme.lightPrimary,    ),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  QuranDetails.routeName,
+                  arguments: suraDetails(suraname: suraNames[index], index: index),
+                );
+              },
+              child: Center(
+                child: Text(
+                  suraNames[index],
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  ),
+),
+  ],
         );
   }
   

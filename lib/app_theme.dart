@@ -22,7 +22,8 @@ class AppTheme{
     textTheme: TextTheme(
       headlineSmall: TextStyle(fontSize: 25,fontWeight: FontWeight.w400, 
       color: black),
-
+      headlineMedium:TextStyle(fontSize: 25,fontWeight: FontWeight.bold, 
+      color: white) ,
       titleLarge: TextStyle(fontSize: 20,fontWeight: FontWeight.w400, 
       color: black),
     ),

@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/app_theme.dart';
+import 'package:islami/tabs/hadeth/hadeth.dart';
 import 'package:islami/tabs/quran/quran_tab.dart';
 
-class QuranDetails extends StatefulWidget {
-  static const String routeName= "/quran_details";
-
+class HadethDetails extends StatefulWidget {
+  static const String routeName= "/hadeth_details";
   @override
-  State<QuranDetails> createState() => _QuranDetailsState();
+  State<HadethDetails> createState() => _HadethDetailsState();
 }
 
-class _QuranDetailsState extends State<QuranDetails> {
-  List <String> ayat=[];
+class _HadethDetailsState extends State<HadethDetails> {
+List <String> new_list = ["mona","mohamed", "ahmed"];
 
 
-late suraDetails args;
 
   @override
   Widget build(BuildContext context) {
-     args= ModalRoute.of(context)!.settings.arguments as  suraDetails;
-     if(ayat.isEmpty){loadQuranFile();}
+    Hadeth hadeth= ModalRoute.of(context)!.settings.arguments as Hadeth;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -28,7 +26,7 @@ late suraDetails args;
       child: Scaffold(
         appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title:Text(args.suraname) ,
+        title:Text(hadeth.hadethheader) ,
         ),
         body: Container(
           margin: EdgeInsets.symmetric(
@@ -43,7 +41,8 @@ late suraDetails args;
             borderRadius: BorderRadius.circular(20),
             color: Color.fromARGB(185, 248, 248, 248),
           ),
-          child: ayat.isEmpty ?
+          child: 
+          hadeth.hadetcontent.isEmpty ?
           Center(child: CircularProgressIndicator()) 
           :
           ListView.builder(
@@ -51,25 +50,16 @@ late suraDetails args;
           itemBuilder: 
           (_,index) =>
           Text(
-            ayat[index]
+            hadeth.hadetcontent[index]
            ,textAlign: TextAlign.center
             ,style: Theme.of(context).textTheme.titleLarge,),
 
-          itemCount: ayat.length,
+          itemCount: hadeth.hadetcontent.length,
           ),
         ),
       ),
     );
   }
 
-  Future<void> loadQuranFile() async {
-  
-  String sura= await rootBundle.loadString("assets/files/${args.index + 1}.txt");
-  print(args.index);
  
-  ayat = sura.split("/n");
-  setState(() {
-    
-  });
-  }
 }

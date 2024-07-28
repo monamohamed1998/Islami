@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami/app_theme.dart';
 import 'package:islami/first_page.dart';
+import 'package:islami/tabs/hadeth/hadeth_details.dart';
 import 'package:islami/tabs/hadeth/hadeth_tab.dart';
 import 'package:islami/tabs/quran/quran_details.dart';
 import 'package:islami/tabs/quran/quran_tab.dart';
@@ -28,6 +29,7 @@ class Islami extends StatelessWidget {
         RadioTab.routeName : (_)=>RadioTab(),
         SettingTab.routeName : (_)=>SettingTab(),
         QuranDetails.routeName : (_)=>QuranDetails(),
+        HadethDetails.routeName : (_)=>HadethDetails(),
 
       },
       theme: AppTheme.lightTheme ,
