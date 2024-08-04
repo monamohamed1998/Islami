@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:islami/app_theme.dart';
 import 'package:islami/tabs/hadeth/hadeth.dart';
 import 'package:islami/tabs/quran/quran_tab.dart';
+import 'package:islami/tabs/settings_tab/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetails extends StatefulWidget {
   static const String routeName= "/hadeth_details";
@@ -17,11 +19,13 @@ List <String> new_list = ["mona","mohamed", "ahmed"];
 
   @override
   Widget build(BuildContext context) {
+            SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+
     Hadeth hadeth= ModalRoute.of(context)!.settings.arguments as Hadeth;
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/bg3.png",),fit: BoxFit.fill),
+          image: AssetImage(Provider.of<SettingsProvider>(context).bgImg),fit: BoxFit.fill),
       ),
       child: Scaffold(
         appBar: AppBar(
@@ -39,7 +43,7 @@ List <String> new_list = ["mona","mohamed", "ahmed"];
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Color.fromARGB(185, 248, 248, 248),
+            color: settingsProvider.isdark? AppTheme.darkPrimary : AppTheme.white,
           ),
           child: 
           hadeth.hadetcontent.isEmpty ?

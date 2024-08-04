@@ -5,6 +5,8 @@ import 'package:islami/tabs/quran/quran_tab.dart';
 import 'package:islami/tabs/radio/radio_tab.dart';
 import 'package:islami/tabs/sebha/sebha_tab.dart';
 import 'package:islami/tabs/settings_tab/setting_tab.dart';
+import 'package:islami/tabs/settings_tab/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 class FirstPage extends StatefulWidget {
   static const String routeName= "/";
@@ -26,10 +28,13 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
+        // SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
+
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/bg3.png",),fit: BoxFit.fill),
+          image:AssetImage(Provider.of<SettingsProvider>(context).bgImg) 
+          ,fit: BoxFit.fill),
       ),
       child: Scaffold(
         

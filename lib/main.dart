@@ -8,16 +8,26 @@ import 'package:islami/tabs/quran/quran_tab.dart';
 import 'package:islami/tabs/radio/radio_tab.dart';
 import 'package:islami/tabs/sebha/sebha_tab.dart';
 import 'package:islami/tabs/settings_tab/setting_tab.dart';
+import 'package:islami/tabs/settings_tab/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp( Islami());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SettingsProvider()),
+      
+      ],
+      child: Islami(),
+    ),
+  );
 }
-
 class Islami extends StatelessWidget {
   const Islami({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       
@@ -32,9 +42,10 @@ class Islami extends StatelessWidget {
         HadethDetails.routeName : (_)=>HadethDetails(),
 
       },
+      
       theme: AppTheme.lightTheme ,
-      darkTheme: AppTheme.lightTheme,
-      themeMode: ThemeMode.light,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: settingsProvider.themeMode,
     );
   }
 }

@@ -26,7 +26,10 @@ class AppTheme{
       color: white) ,
       titleLarge: TextStyle(fontSize: 20,fontWeight: FontWeight.w400, 
       color: black),
+        labelSmall:TextStyle(fontSize: 16,fontWeight: FontWeight.bold, 
+      color: black) ,
     ),
+    
 
     bottomNavigationBarTheme: 
     BottomNavigationBarThemeData(
@@ -36,6 +39,43 @@ class AppTheme{
       backgroundColor:lightPrimary 
       )
   );
-  static ThemeData darkTheme = ThemeData();
+  static ThemeData darkTheme = ThemeData(
+ primaryColor: darkPrimary,
+    scaffoldBackgroundColor: Colors.transparent,
+    appBarTheme: AppBarTheme(
+      foregroundColor: white,
+      backgroundColor: Colors.transparent,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontSize: 30,
+        color: white,
+        fontWeight: FontWeight.bold
+      )
+      ),
+    textTheme: TextTheme(
+      headlineSmall: TextStyle(fontSize: 25,fontWeight: FontWeight.w400, 
+      color: white),
+      headlineMedium:TextStyle(fontSize: 25,fontWeight: FontWeight.bold, 
+      color: white) ,
+      titleLarge: TextStyle(fontSize: 20,fontWeight: FontWeight.w400, 
+      color: gold),
+       labelSmall:TextStyle(fontSize: 16,fontWeight: FontWeight.bold, 
+      color: white) ,
+    ),
+
+    bottomNavigationBarTheme: 
+    BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+          selectedItemColor: gold,
+          unselectedItemColor: white,
+      backgroundColor:darkPrimary 
+      ),
+      switchTheme: SwitchThemeData(
+      thumbColor: WidgetStatePropertyAll(white),
+      trackColor: WidgetStatePropertyAll(gold),
+      
+    ),
+
+  );
   
 }
