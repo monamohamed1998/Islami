@@ -7,6 +7,7 @@ import 'package:islami/tabs/sebha/sebha_tab.dart';
 import 'package:islami/tabs/settings_tab/setting_tab.dart';
 import 'package:islami/tabs/settings_tab/settings_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstPage extends StatefulWidget {
   static const String routeName= "/";
@@ -39,7 +40,7 @@ class _FirstPageState extends State<FirstPage> {
       child: Scaffold(
         
         appBar: AppBar(
-          title: Text("اسلامي"),
+          title: Text(AppLocalizations.of(context)!.islami),
          
         ),
         body: tabs[currentindex], 
@@ -52,11 +53,11 @@ class _FirstPageState extends State<FirstPage> {
             });
           },
           items: [
-          BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/icon_quran.png")),label: "Quran"),
-          BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/icon_hadeth.png")),label: "Hadeth"),
-          BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/icon_sebha.png")),label: "Sebha"),
-          BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),label: "Radio"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings),label: "Settings"),
+          BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/icon_quran.png")),label:AppLocalizations.of(context)!.quran),
+          BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/icon_hadeth.png")),label: AppLocalizations.of(context)!.hadeth),
+          BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/icon_sebha.png")),label: AppLocalizations.of(context)!.sebha),
+          BottomNavigationBarItem(icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),label: AppLocalizations.of(context)!.radio),
+          BottomNavigationBarItem(icon: Icon(Icons.settings),label: AppLocalizations.of(context)!.settings),
         ]),
       ),
     );

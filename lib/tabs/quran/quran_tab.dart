@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/app_theme.dart';
 import 'package:islami/tabs/quran/quran_details.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class QuranTab extends StatelessWidget {
     static const String routeName= "/quran_tab";
@@ -38,13 +40,14 @@ class QuranTab extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(child: Center(child: Text("عدد الايات",style:Theme.of(context).textTheme.headlineSmall))),
+                Expanded(child: Center(child: Text(AppLocalizations.of(context)!.ayatnumber,style:Theme.of(context).textTheme.headlineSmall))),
                  Container(
                     width: 2, 
                     height: 30, 
                     color: AppTheme.lightPrimary, 
                   ),
-                Expanded(child: Center(child: Text("اسم السورة",style:Theme.of(context).textTheme.headlineSmall))),
+                Expanded(child: Center(child: Text(AppLocalizations.of(context)!.suraaname
+                  ,style:Theme.of(context).textTheme.headlineSmall))),
               ],
             ),
              Divider(

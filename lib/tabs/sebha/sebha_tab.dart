@@ -3,6 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:islami/app_theme.dart';
 import 'package:islami/tabs/quran/quran_details.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SebhaTab extends StatefulWidget {
     static const String routeName= "/sebha_tab";
@@ -35,7 +37,7 @@ class _SebhaTabState extends State<SebhaTab> {
               ),
               SizedBox(   height:  MediaQuery.of(context).size.height*0.05,
               ),
-           Text("عدد التسبيحات",style: Theme.of(context).textTheme.headlineSmall,),
+           Text(AppLocalizations.of(context)!.tasbeeh,style: Theme.of(context).textTheme.headlineSmall,),
           
            SizedBox(   height:  MediaQuery.of(context).size.height*0.03,
               ),
